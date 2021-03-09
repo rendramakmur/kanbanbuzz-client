@@ -71,6 +71,8 @@ var app = new Vue({
                     description: this.inputDescTask
                 })
             }
+            this.inputTitleTask = '';
+            this.inputDescTask = '';
         }
     }
 })
