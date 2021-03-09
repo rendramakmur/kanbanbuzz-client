@@ -1,0 +1,62 @@
+body {
+  background-color: #613B6F;
+  font-family: "Hammersmith One", sans-serif;
+  color: #8DAC50;
+}
+
+p {
+  margin: 0;
+  color: #353535;
+}
+
+a {
+  text-decoration: none;
+  color: #8DAC50 !important;
+}
+
+.navbar-light {
+  background-color: #613B6F !important;
+}
+
+.very-small-text {
+  font-size: 14px;
+}
+
+.small-text {
+  font-size: 16px;
+}
+
+.medium-text {
+  font-size: 18px;
+}
+
+.large-text {
+  font-size: 24px;
+}
+
+.small-button {
+  padding: 8px;
+  background-color: #F5C290;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #353535 !important;
+}
+
+.btn {
+  background-color: #F5C290 !important;
+  border-radius: 5px !important;
+  font-size: 14px !important;
+  color: #613B6F !important;
+}
+
+.btn-edit {
+  background-color: #8DAC50;
+  color: #FFFF !important;
+}
+
+.btn-delete {
+  background-color: #DB382D !important;
+  color: #FFFF !important;
+}
+
+/*# sourceMappingURL=stylesheet.css.map */

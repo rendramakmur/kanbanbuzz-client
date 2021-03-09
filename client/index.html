@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Kanban</title>
+</head>
+<body>
+    <div id="app">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand ms-3 large-text" href="#">Kanban</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="d-flex justify-content-end collapse navbar-collapse me-3" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link medium-text" href="#">Register</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link medium-text" href="#">Login</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+        <!-- Login session -->
+        <section>
+            <div id="login-page">
+            </div>
+        </section>
+
+        <!-- Register session -->
+        <section>
+            <div id="register-page">
+
+            </div>
+        </section>
+
+        <!-- Homepage session -->
+        <div id="homepage">
+
+            <!-- Start container kanban column -->
+            <div class="container-fluid">
+
+                <!-- Start first row + mx -->
+                <div class="row mx-2">
+
+                    <!-- Start kanban column -->
+                    <div class="col-sm-3">
+                        <div class="card mt-3 mb-5 shadow-lg" style="height: 90vh;">
+                            <div class="card-header">
+                              <p class="medium-text text-center">Backlog</p>
+                            </div>
+                            <div class="card-body overflow-auto">
+                                
+                                <!-- Start kanban card -->
+                                <div class="card mt-3 shadow">
+                                    <div class="card-header">
+                                        <p>Title</p>
+                                    </div>
+                                    <div class="card-body">
+                                      <p class="very-small-text">With supporting text below as a natural lead-in to additional content.</p>
+                                      <div class="mt-2">
+                                          <a href="#" class="small-button btn-edit shadow-sm">Edit</a> <a href="#" class="small-button btn-delete shadow-sm">Delete</a>
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- End kanban card -->
+
+                                <!-- Start kanban card -->
+                                <div class="card mt-3 shadow">
+                                    <div class="card-header">
+                                        <p>Title</p>
+                                    </div>
+                                    <div class="card-body">
+                                      <p class="very-small-text">With supporting text below as a natural lead-in to additional content.</p>
+                                      <div class="mt-2">
+                                          <a href="#" class="small-button btn-edit shadow-sm">Edit</a> <a href="#" class="small-button btn-delete shadow-sm">Delete</a>
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- End kanban card -->
+
+                                <!-- Start kanban card -->
+                                <div class="card mt-3 shadow">
+                                    <div class="card-header">
+                                        <p>Title</p>
+                                    </div>
+                                    <div class="card-body">
+                                      <p class="very-small-text">With supporting text below as a natural lead-in to additional content.</p>
+                                      <div class="mt-2">
+                                          <a href="#" class="small-button btn-edit shadow-sm">Edit</a> <a href="#" class="small-button btn-delete shadow-sm">Delete</a>
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- End kanban card -->
+                              
+                            </div>
+
+                            <!-- Add task button -->
+                            <div class="card-footer">
+                                <a href="#" class="btn medium-button col-6 offset-3 my-1 shadow">Add task</a>
+                            </div>
+                            <!-- End task button -->
+
+                        </div>
+                    </div>
+                    <!-- End kanban column -->
+
+
+                    <!-- Start kanban column -->
+                    <div class="col-sm-3">
+                        <div class="card mt-3 mb-5 shadow-lg" style="height: 90vh;">
+                            <div class="card-header">
+                              <p class="medium-text text-center">To-Do</p>
+                            </div>
+                            <div class="card-body overflow-auto">
+                                
+                                <!-- Start kanban card -->
+                                <div class="card mt-3 shadow">
+                                    <div class="card-header">
+                                        <p>Title</p>
+                                    </div>
+                                    <div class="card-body">
+                                      <p class="very-small-text">With supporting text below as a natural lead-in to additional content.</p>
+                                      <div class="mt-2">
+                                          <a href="#" class="small-button btn-edit shadow-sm">Edit</a> <a href="#" class="small-button btn-delete shadow-sm">Delete</a>
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- End kanban card -->
+
+                                <!-- Start kanban card -->
+                                <div class="card mt-3 shadow">
+                                    <div class="card-header">
+                                        <p>Title</p>
+                                    </div>
+                                    <div class="card-body">
+                                      <p class="very-small-text">With supporting text below as a natural lead-in to additional content.</p>
+                                      <div class="mt-2">
+                                          <a href="#" class="small-button btn-edit shadow-sm">Edit</a> <a href="#" class="small-button btn-delete shadow-sm">Delete</a>
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- End kanban card -->
+
+                                <!-- Start kanban card -->
+                                <div class="card mt-3 shadow">
+                                    <div class="card-header">
+                                        <p>Title</p>
+                                    </div>
+                                    <div class="card-body">
+                                      <p class="very-small-text">With supporting text below as a natural lead-in to additional content.</p>
+                                      <div class="mt-2">
+                                          <a href="#" class="small-button btn-edit shadow-sm">Edit</a> <a href="#" class="small-button btn-delete shadow-sm">Delete</a>
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- End kanban card -->
+                              
+                            </div>
+
+                            <!-- Add task button -->
+                            <div class="card-footer">
+                                <a href="#" class="btn medium-button col-6 offset-3 my-1 shadow">Add task</a>
+                            </div>
+                            <!-- End task button -->
+
+                        </div>
+                    </div>
+                    <!-- End kanban column -->
+
+
+                    <!-- Start kanban column -->
+                    <div class="col-sm-3">
+                        <div class="card mt-3 mb-5 shadow-lg" style="height: 90vh;">
+                            <div class="card-header">
+                              <p class="medium-text text-center">Doing</p>
+                            </div>
+                            <div class="card-body overflow-auto">
+                                
+                                <!-- Start kanban card -->
+                                <div class="card mt-3 shadow">
+                                    <div class="card-header">
+                                        <p>Title</p>
+                                    </div>
+                                    <div class="card-body">
+                                      <p class="very-small-text">With supporting text below as a natural lead-in to additional content.</p>
+                                      <div class="mt-2">
+                                          <a href="#" class="small-button btn-edit shadow-sm">Edit</a> <a href="#" class="small-button btn-delete shadow-sm">Delete</a>
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- End kanban card -->
+
+                                <!-- Start kanban card -->
+                                <div class="card mt-3 shadow">
+                                    <div class="card-header">
+                                        <p>Title</p>
+                                    </div>
+                                    <div class="card-body">
+                                      <p class="very-small-text">With supporting text below as a natural lead-in to additional content.</p>
+                                      <div class="mt-2">
+                                          <a href="#" class="small-button btn-edit shadow-sm">Edit</a> <a href="#" class="small-button btn-delete shadow-sm">Delete</a>
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- End kanban card -->
+                              
+                            </div>
+
+                            <!-- Add task button -->
+                            <div class="card-footer">
+                                <a href="#" class="btn medium-button col-6 offset-3 my-1 shadow">Add task</a>
+                            </div>
+                            <!-- End task button -->
+
+                        </div>
+                    </div>
+                    <!-- End kanban column -->
+
+
+                    <!-- Start kanban column -->
+                    <div class="col-sm-3">
+                        <div class="card mt-3 mb-5 shadow-lg" style="height: 90vh;">
+                            <div class="card-header">
+                              <p class="medium-text text-center">Done</p>
+                            </div>
+                            <div class="card-body overflow-auto">
+                                
+                                <!-- Start kanban card -->
+                                <div class="card mt-3 shadow">
+                                    <div class="card-header">
+                                        <p>Title</p>
+                                    </div>
+                                    <div class="card-body">
+                                      <p class="very-small-text">With supporting text below as a natural lead-in to additional content.</p>
+                                      <div class="mt-2">
+                                          <a href="#" class="small-button btn-edit shadow-sm">Edit</a> <a href="#" class="small-button btn-delete shadow-sm">Delete</a>
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- End kanban card -->
+                              
+                            </div>
+
+                            <!-- Add task button -->
+                            <div class="card-footer">
+                                <a href="#" class="btn medium-button col-6 offset-3 my-1 shadow">Add task</a>
+                            </div>
+                            <!-- End task button -->
+
+                        </div>
+                    </div>
+                    <!-- End kanban column -->
+
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha383-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+</html>
