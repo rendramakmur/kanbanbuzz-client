@@ -2,7 +2,7 @@ var app = new Vue({
     el: '#app',
     data: {
       addTaskCategory: 'backlogs',
-      page: 'homepage',
+      page: 'login',
       backlogs: [
           {
             title: 'Create kanban server',
