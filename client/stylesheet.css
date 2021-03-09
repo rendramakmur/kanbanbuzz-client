@@ -59,4 +59,8 @@ a {
   color: #FFFF !important;
 }
 
+.card {
+  border-color: rgba(0, 0, 0, 0);
+}
+
 /*# sourceMappingURL=stylesheet.css.map */
