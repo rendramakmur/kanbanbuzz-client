@@ -1,7 +1,8 @@
 var app = new Vue({
     el: '#app',
     data: {
-      page: 'login',
+      addTaskCategory: 'backlogs',
+      page: 'homepage',
       backlogs: [
           {
             title: 'Create kanban server',
@@ -37,11 +38,39 @@ var app = new Vue({
           title: 'Create kanban HTML & CSS',
           description: 'For Kanban app client-side.'
         }
-      ]
+      ],
+      inputTitleTask: '',
+      inputDescTask: '',
     },
     methods: {
         changePage(destination) {
             this.page = destination;
+        },
+        changeAddTaskCategory(category) {
+            this.addTaskCategory = category;
+        },
+        submitTask(){
+            if (this.addTaskCategory === 'backlogs') {
+                this.backlogs.push({
+                    title: this.inputTitleTask,
+                    description: this.inputDescTask
+                })
+            } else if (this.addTaskCategory === 'todos') {
+                this.todos.push({
+                    title: this.inputTitleTask,
+                    description: this.inputDescTask
+                })
+            } if (this.addTaskCategory === 'doings') {
+                this.doings.push({
+                    title: this.inputTitleTask,
+                    description: this.inputDescTask
+                })
+            } if (this.addTaskCategory === 'dones') {
+                this.dones.push({
+                    title: this.inputTitleTask,
+                    description: this.inputDescTask
+                })
+            }
         }
     }
 })
