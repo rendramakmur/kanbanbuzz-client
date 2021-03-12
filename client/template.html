@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>KanbanBuzz</title>
+</head>
+<body>
+    <div id="app">
+        <!-- Start Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand ms-3 large-text" href="#">KanbanBuzz</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="d-flex justify-content-end collapse navbar-collapse me-3" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link medium-text" href="#" @click.prevent="changePage('homepage')">Kanban</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link medium-text" href="#" @click.prevent="changePage('register')">Register</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link medium-text" href="#" @click.prevent="changePage('login')">Login</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+
+        <!-- Start login session -->
+        <section v-if="page === 'login'">
+            <div id="login-page">
+                <div class="container-fluid">
+
+                    <div class="row mx-3">
+                        <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+                            <div class="col-sm-4">
+                                <div class="card mt-3 mb-5 shadow-lg">
+                                    <div class="card-header">
+                                      <p class="medium-text text-center">LOGIN</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control" id="email-login" placeholder="name@example.com">
+                                            <label for="email-login">Email address</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="password" class="form-control" id="password-login" placeholder="Password">
+                                            <label for="password-login">Password</label>
+                                        </div>
+
+                                        <div class="d-flex justify-content-center">
+                                            <div class="mt-2">
+                                                <a href="#" class="btn medium-button my-1 px-3 shadow">Login</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-center">
+                                            <div class="mt-2">
+                                                <a href="#" class="btn medium-button my-1 shadow" @click.prevent="changePage('register')">Register</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+        <!-- End login session -->
+
+        <!-- Start register session -->
+        <section v-else-if="page === 'register'">
+            <div id="register-page">
+                <div class="container-fluid">
+
+                    <div class="row mx-3">
+                        <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+                            <div class="col-sm-4">
+                                <div class="card mt-3 mb-5 shadow-lg">
+                                    <div class="card-header">
+                                      <p class="medium-text text-center">REGISTER</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="name-register" placeholder="Jon Doe">
+                                            <label for="name-register">Full name</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control" id="email-register" placeholder="name@example.com">
+                                            <label for="email-register">Email address</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="password" class="form-control" id="password-register" placeholder="Password">
+                                            <label for="password-register">Password</label>
+                                        </div>
+
+                                        <div class="d-flex justify-content-center">
+                                            <div class="mt-2">
+                                                <a href="#" class="btn medium-button my-1 px-4 shadow">Submit</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+        <!-- End register session -->
+
+        <!-- Homepage session -->
+        <section v-else-if="page === 'homepage'">
+            <div id="homepage">
+    
+                <!-- Start container kanban column -->
+                <div class="container-fluid">
+    
+                    <!-- Start first row + mx -->
+                    <div class="row mx-2">
+    
+                        <!-- Start kanban column -->
+                        <div class="col-sm-3" style="height: 100vh;">
+                            <div class="card mt-3 mb-5 shadow-lg" style="height: 90vh;">
+                                <div class="card-header">
+                                  <p class="medium-text text-center">Backlog</p>
+                                </div>
+                                <div class="card-body overflow-auto">
+                                    
+                                    <!-- Start kanban card -->
+                                    <div class="card mt-3 shadow" v-for="(backlog, i) in backlogs" :key="i">
+                                        <div class="card-header">
+                                            <p>{{ backlog.title }}</p>
+                                        </div>
+                                        <div class="card-body">
+                                          <p class="very-small-text">{{ backlog.description }}</p>
+                                          <div class="mt-2">
+                                              <a href="#" class="small-button btn-edit shadow-sm">Edit</a> <a href="#" class="small-button btn-delete shadow-sm">Delete</a>
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <!-- End kanban card -->
+                                  
+                                </div>
+    
+                                <!-- Add task button -->
+                                <div class="card-footer">
+                                    <a href="#" class="btn medium-button col-6 offset-3 my-1 shadow" @click.prevent="changeAddTaskCategory('backlogs'); changePage('addTask');">Add task</a>
+                                </div>
+                                <!-- End task button -->
+    
+                            </div>
+                        </div>
+                        <!-- End kanban column -->
+    
+    
+                        <!-- Start kanban column -->
+                        <div class="col-sm-3">
+                            <div class="card mt-3 mb-5 shadow-lg" style="height: 90vh;">
+                                <div class="card-header">
+                                  <p class="medium-text text-center">To-Do</p>
+                                </div>
+                                <div class="card-body overflow-auto">
+                                    
+                                    <!-- Start kanban card -->
+                                    <div class="card mt-3 shadow" v-for="(todo, i) in todos" :key="i">
+                                        <div class="card-header">
+                                            <p>{{ todo.title }}</p>
+                                        </div>
+                                        <div class="card-body">
+                                          <p class="very-small-text">{{ todo.description }}</p>
+                                          <div class="mt-2">
+                                              <a href="#" class="small-button btn-edit shadow-sm">Edit</a> <a href="#" class="small-button btn-delete shadow-sm">Delete</a>
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <!-- End kanban card -->
+                                  
+                                </div>
+    
+                                <!-- Add task button -->
+                                <div class="card-footer">
+                                    <a href="#" class="btn medium-button col-6 offset-3 my-1 shadow" @click.prevent="changeAddTaskCategory('todos'); changePage('addTask');">Add task</a>
+                                </div>
+                                <!-- End task button -->
+    
+                            </div>
+                        </div>
+                        <!-- End kanban column -->
+    
+    
+                        <!-- Start kanban column -->
+                        <div class="col-sm-3">
+                            <div class="card mt-3 mb-5 shadow-lg" style="height: 90vh;">
+                                <div class="card-header">
+                                  <p class="medium-text text-center">Doing</p>
+                                </div>
+                                <div class="card-body overflow-auto">
+                                    
+                                    <!-- Start kanban card -->
+                                    <div class="card mt-3 shadow" v-for="(doing, i) in doings" :key="i">
+                                        <div class="card-header">
+                                            <p>{{ doing.title }}</p>
+                                        </div>
+                                        <div class="card-body">
+                                          <p class="very-small-text">{{ doing.description }}</p>
+                                          <div class="mt-2">
+                                              <a href="#" class="small-button btn-edit shadow-sm">Edit</a> <a href="#" class="small-button btn-delete shadow-sm">Delete</a>
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <!-- End kanban card -->
+                                  
+                                </div>
+    
+                                <!-- Add task button -->
+                                <div class="card-footer">
+                                    <a href="#" class="btn medium-button col-6 offset-3 my-1 shadow" @click.prevent="changeAddTaskCategory('doings'); changePage('addTask');">Add task</a>
+                                </div>
+                                <!-- End task button -->
+    
+                            </div>
+                        </div>
+                        <!-- End kanban column -->
+    
+    
+                        <!-- Start kanban column -->
+                        <div class="col-sm-3">
+                            <div class="card mt-3 mb-5 shadow-lg" style="height: 90vh;">
+                                <div class="card-header">
+                                  <p class="medium-text text-center">Done</p>
+                                </div>
+                                <div class="card-body overflow-auto">
+                                    
+                                    <!-- Start kanban card -->
+                                    <div class="card mt-3 shadow" v-for="(done, i) in dones" :key="i">
+                                        <div class="card-header">
+                                            <p>{{ done.title }}</p>
+                                        </div>
+                                        <div class="card-body">
+                                          <p class="very-small-text">{{ done.description }}</p>
+                                          <div class="mt-2">
+                                              <a href="#" class="small-button btn-edit shadow-sm">Edit</a> <a href="#" class="small-button btn-delete shadow-sm">Delete</a>
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <!-- End kanban card -->
+                                  
+                                </div>
+    
+                                <!-- Add task button -->
+                                <div class="card-footer">
+                                    <a href="#" class="btn medium-button col-6 offset-3 my-1 shadow" @click.prevent="changeAddTaskCategory('dones'); changePage('addTask');">Add task</a>
+                                </div>
+                                <!-- End task button -->
+    
+                            </div>
+                        </div>
+                        <!-- End kanban column -->
+            </div>
+        </section>
+
+        <!-- Start add task -->
+        <section v-else-if="page === 'addTask'">
+            <div id="add-task-page">
+                <div class="container-fluid">
+
+                    <div class="row mx-3">
+                        <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+                            <div class="col-sm-4">
+                                <div class="card mt-3 mb-5 shadow-lg">
+                                    <div class="card-header">
+                                      <p class="medium-text text-center">ADD TASK</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="title-task" placeholder="Create Something" v-model="inputTitleTask">
+                                            <label for="title-task">Title</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="description-task" placeholder="Create with something." v-model="inputDescTask">
+                                            <label for="description-task">Description</label>
+                                        </div>
+
+                                        <div class="d-flex justify-content-center">
+                                            <div class="mt-2">
+                                                <a href="#" class="btn medium-button my-1 px-4 shadow" @click.prevent="submitTask(); changePage('homepage');">Submit</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+        <!-- End add task -->
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha383-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+</html>
