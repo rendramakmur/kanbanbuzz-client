@@ -28,7 +28,7 @@
 
                                     <div class="d-flex justify-content-center">
                                         <div class="mt-2">
-                                            <a href="#" class="btn medium-button my-1 shadow">Register</a>
+                                            <a href="#" class="btn medium-button my-1 shadow" @click.prevent="registerButton">Register</a>
                                         </div>
                                     </div>
 
@@ -80,6 +80,9 @@ export default {
                 this.login_email = ''
                 this.login_password = ''
             }) 
+        },
+        registerButton() {
+            this.changePageProp('register');
         }
     }
 }

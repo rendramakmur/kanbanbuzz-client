@@ -2,7 +2,7 @@
     <div>
         <Navbar :pageProp="page" @navbarLogin="changePage" @navbarRegister="changePage" @navbarLogout="logout"></Navbar>
         <LoginPage v-if="page === 'login'" :baseUrl="baseUrl" :changePageProp="changePage"></LoginPage>
-        <RegisterPage v-else-if="page === 'register'"></RegisterPage>
+        <RegisterPage v-else-if="page === 'register'" :changePageProp="changePage" :baseUrl="baseUrl"></RegisterPage>
         <HomePage v-else-if="page === 'home'"></HomePage>
         <AddTaskPage v-if="addTask === false"></AddTaskPage>
     </div>
