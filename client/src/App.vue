@@ -3,8 +3,8 @@
         <Navbar :pageProp="page" @navbarLogin="changePage" @navbarRegister="changePage" @navbarLogout="logout"></Navbar>
         <LoginPage v-if="page === 'login'" :baseUrl="baseUrl" :changePageProp="changePage"></LoginPage>
         <RegisterPage v-else-if="page === 'register'" :changePageProp="changePage" :baseUrl="baseUrl"></RegisterPage>
-        <HomePage v-else-if="page === 'home'" :baseUrl="baseUrl" :editAddPageProp="changeEditAddPage" :fetchTasks="fetchTasks" :tasks="tasks"></HomePage>
-        <AddTaskPage v-if="addTask === true" :editAddPageProp="changeEditAddPage" :baseUrl="baseUrl" :fetchTasks="fetchTasks"></AddTaskPage>
+        <HomePage v-else-if="page === 'home'" :baseUrl="baseUrl" :addPageProp="changeAddPage" :fetchTasks="fetchTasks" :tasks="tasks"></HomePage>
+        <AddTaskPage v-if="addTask === true" :editAddPageProp="changeAddPage" :baseUrl="baseUrl" :fetchTasks="fetchTasks"></AddTaskPage>
     </div>
 </template>
 
@@ -36,7 +36,7 @@ export default {
                 this.page = 'home';
             }
         },
-        changeEditAddPage(value) {
+        changeAddPage(value) {
             this.addTask=value;
         },
         logout() {

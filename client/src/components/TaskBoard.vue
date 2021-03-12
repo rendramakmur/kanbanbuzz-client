@@ -8,13 +8,13 @@
             <div class="card-body overflow-auto">
                 
                 <!-- Task items -->
-                <TaskItem v-for="task in filterCategory" :key="task.id" :taskData="task"></TaskItem>
+                <TaskItem v-for="task in filterCategory" :key="task.id" :taskData="task" :fetchTasks="fetchTasks" :baseUrl="baseUrl" :changeEditTaskPage="changeEditTaskPage" @editedTaskData="editedTaskOnTaskBoard"></TaskItem>
 
             </div>
 
             <!-- Add task button -->
             <div class="card-footer">
-                <a href="#" class="btn medium-button col-6 offset-3 my-1 shadow" @click.prevent="editAddPageProp(true)">Add task</a>
+                <a href="#" class="btn medium-button col-6 offset-3 my-1 shadow" @click.prevent="addPageProp(true)">Add task</a>
             </div>
             <!-- End task button -->
 
@@ -27,7 +27,7 @@ import TaskItem from './TaskItem.vue'
 
 export default {
     name: 'TaskBoard',
-    props: ['categoryName', 'tasks', "editAddPageProp"],
+    props: ['categoryName', 'tasks', "addPageProp", "fetchTasks", "baseUrl", "changeEditTaskPage"],
     data() {
         return {
 
@@ -37,7 +37,9 @@ export default {
         TaskItem
     },
     methods: {
-        
+        editedTaskOnTaskBoard(value) {
+            this.$emit('editedTaskOnTaskBoard', value);
+        }
     },
     computed: {
         filterCategory () {

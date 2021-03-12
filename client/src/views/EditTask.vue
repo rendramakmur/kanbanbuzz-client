@@ -1,5 +1,5 @@
 <template>
-<!-- Start add task -->
+  <!-- Start add task -->
     <section>
         <div id="add-task-page">
             <div class="container-fluid">
@@ -10,23 +10,25 @@
                             <div class="col-sm-4">
                                 <div class="card mt-3 mb-5 shadow-lg">
                                     <div class="card-header d-flex justify-content-between">
-                                        <p class="medium-text ms-2">ADD TASK</p>
+                                        <p class="medium-text ms-2">EDIT TASK</p>
                                         <!-- Close button -->
-                                        <a type="button" class="btn-close me-2" aria-label="Close" @click.prevent="editAddPageProp(false)"></a>
+                                        <a type="button" class="btn-close me-2" aria-label="Close" @click.prevent="changeEditTaskPage(false)"></a>
                                     </div>
                                     <div class="card-body">
+                                        <!-- Call computed getId -->
+                                        <span style="display: none;">{{ getId }}</span>
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="title-task" placeholder="Create Something" v-model="title">
+                                            <input type="text" class="form-control" id="title-task" placeholder="Create Something" v-model="getTitle">
                                             <label for="title-task">Title</label>
                                         </div>
 
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="description-task" placeholder="Create with something." v-model="description">
+                                            <input type="text" class="form-control" id="description-task" placeholder="Create with something." v-model="getDescription">
                                             <label for="description-task">Description</label>
                                         </div>
 
                                         <label for="task-category">Category</label>
-                                        <select class="form-select mb-3" style="color: #8DAC50" id="task-category" v-model="category">
+                                        <select class="form-select mb-3" style="color: #8DAC50" id="task-category" v-model="getCategory">
                                             <option value="backlog">Backlog</option>
                                             <option value="todo">To-Do</option>
                                             <option value="doing">Doing</option>
@@ -34,7 +36,7 @@
                                         </select>
 
                                         <label for="task-category">Priority</label>
-                                        <select class="form-select mb-3" style="color: #8DAC50" id="task-priority" v-model="priority">
+                                        <select class="form-select mb-3" style="color: #8DAC50" id="task-priority" v-model="getPriority">
                                             <option value="very low">Very Low</option>
                                             <option value="low">Low</option>
                                             <option value="medium">Medium</option>
@@ -44,7 +46,7 @@
 
                                         <div class="d-flex justify-content-center">
                                             <div class="mt-2">
-                                                <a href="#" class="btn medium-button my-1 px-4 shadow" @click.prevent="addTask">Submit</a>
+                                                <a href="#" class="btn medium-button my-1 px-4 shadow" @click.prevent="editTask">Submit</a>
                                             </div>
                                         </div>
                                     </div>
@@ -64,10 +66,11 @@
 import axios from 'axios';
 
 export default {
-    name: 'AddPage',
-    props: ['editAddPageProp', 'baseUrl', 'fetchTasks'],
+    name: 'EditPage',
+    props: ["changeEditTaskPage", "editedTask", "baseUrl", "fetchTasks"],
     data() {
         return {
+            id: this.getId,
             title: '',
             description: '',
             category: '',
@@ -75,10 +78,10 @@ export default {
         }
     },
     methods: {
-        addTask() {
+        editTask () {
             axios({
-                url: `${this.baseUrl}/tasks`,
-                method: 'POST',
+                url: `${this.baseUrl}/tasks/${this.id}`,
+                method: 'PUT',
                 headers: {
                     access_token: localStorage.access_token
                 },
@@ -92,17 +95,53 @@ export default {
             .then(({data}) => {
                 console.log(data);
                 this.fetchTasks();
-                this.editAddPageProp(false);
+                this.changeEditTaskPage(false)
             })
             .catch(err => {
                 console.log(err);
             })
-            .then(() => {
-                this.title = '';
-                this.description = '';
-                this.category = '';
-                this.priority = '';
-            })
+        }
+    },
+    computed: {
+        getId() {
+            this.id = this.editedTask.id;
+            return this.id = this.editedTask.id;
+        },
+        getTitle: {
+            get: function () {
+                this.title = this.editedTask.title
+                return this.editedTask.title
+            },
+            set: function (value) {
+                this.title = value;
+            }
+        },
+        getDescription: {
+            get: function () {
+                this.description = this.editedTask.description
+                return this.editedTask.description
+            },
+            set: function (value) {
+                this.description = value;
+            }
+        },
+        getCategory: {
+            get: function () {
+                this.category = this.editedTask.category
+                return this.editedTask.category
+            },
+            set: function (value) {
+                this.category = value;
+            }
+        },
+        getPriority: {
+            get: function () {
+                this.priority = this.editedTask.priority
+                return this.editedTask.priority
+            },
+            set: function (value) {
+                this.priority = value;
+            }
         }
     }
 }
