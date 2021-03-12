@@ -3,8 +3,8 @@
         <Navbar :pageProp="page" @navbarLogin="changePage" @navbarRegister="changePage" @navbarLogout="logout"></Navbar>
         <LoginPage v-if="page === 'login'" :baseUrl="baseUrl" :changePageProp="changePage"></LoginPage>
         <RegisterPage v-else-if="page === 'register'" :changePageProp="changePage" :baseUrl="baseUrl"></RegisterPage>
-        <HomePage v-else-if="page === 'home'"></HomePage>
-        <AddTaskPage v-if="addTask === false"></AddTaskPage>
+        <HomePage v-else-if="page === 'home'" :baseUrl="baseUrl" :editAddPageProp="changeEditAddPage" :fetchTasks="fetchTasks" :tasks="tasks"></HomePage>
+        <AddTaskPage v-if="addTask === true" :editAddPageProp="changeEditAddPage" :baseUrl="baseUrl" :fetchTasks="fetchTasks"></AddTaskPage>
     </div>
 </template>
 
@@ -21,8 +21,9 @@ export default {
     data() {
         return {
             page: 'login',
-            addTask: true,
-            baseUrl: 'http://localhost:3000'
+            addTask: false,
+            baseUrl: 'http://localhost:3000',
+            tasks: []
         }
     },
     methods: {
@@ -35,11 +36,29 @@ export default {
                 this.page = 'home';
             }
         },
+        changeEditAddPage(value) {
+            this.addTask=value;
+        },
         logout() {
             localStorage.removeItem('access_token');
             localStorage.removeItem('name');
             localStorage.removeItem('email');
             this.page='login';
+        },
+        fetchTasks() {
+            axios({
+                url: `${this.baseUrl}/tasks`,
+                method: 'GET',
+                headers: {
+                    access_token: localStorage.access_token,
+                }
+            })
+            .then(({data}) => {
+                this.tasks = data;
+            })
+            .catch(err => {
+                console.log(err);
+            })
         }
     },
     components: {

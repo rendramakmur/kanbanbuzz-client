@@ -3,7 +3,7 @@
 
         <!-- Start first row + mx -->
         <div class="row mx-2">
-            <TaskBoard></TaskBoard>
+            <TaskBoard v-for="(category, i) in categories" :key="i" :categoryName="category" :tasks="tasks" :editAddPageProp="editAddPageProp"></TaskBoard>
         </div>
     </div>
 </template>
@@ -13,6 +13,7 @@ import TaskBoard from './TaskBoard'
 
 export default {
     name: 'BoardList',
+    props: ["categories", "tasks", "editAddPageProp"],
     data() {
         return {
 

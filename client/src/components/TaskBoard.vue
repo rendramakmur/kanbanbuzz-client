@@ -3,18 +3,18 @@
     <div class="col-sm-3" style="height: 100vh;">
         <div class="card mt-3 mb-5 shadow-lg" style="height: 90vh;">
             <div class="card-header">
-                <p class="medium-text text-center">Doing</p>
+                <p class="medium-text text-center" style="text-transform: capitalize;">{{ categoryName }}</p>
             </div>
             <div class="card-body overflow-auto">
                 
                 <!-- Task items -->
-                <TaskItem></TaskItem>
+                <TaskItem v-for="task in filterCategory" :key="task.id" :taskData="task"></TaskItem>
 
             </div>
 
             <!-- Add task button -->
             <div class="card-footer">
-                <a href="#" class="btn medium-button col-6 offset-3 my-1 shadow">Add task</a>
+                <a href="#" class="btn medium-button col-6 offset-3 my-1 shadow" @click.prevent="editAddPageProp(true)">Add task</a>
             </div>
             <!-- End task button -->
 
@@ -27,6 +27,7 @@ import TaskItem from './TaskItem.vue'
 
 export default {
     name: 'TaskBoard',
+    props: ['categoryName', 'tasks', "editAddPageProp"],
     data() {
         return {
 
@@ -34,6 +35,14 @@ export default {
     },
     components: {
         TaskItem
+    },
+    methods: {
+        
+    },
+    computed: {
+        filterCategory () {
+            return this.tasks.filter(task => task.category.toLowerCase() === this.categoryName.toLowerCase());
+        }
     }
 }
 </script>

@@ -2,12 +2,12 @@
 <!-- Start kanban card -->
     <div class="card mt-3 shadow">
         <div class="card-header">
-            <p>Card Title</p>
+            <p>{{ taskData.title }}</p>
         </div>
         <div class="card-body">
-            <p class="very-small-text">Card Description</p>
+            <p class="very-small-text">{{ taskData.description }}</p>
             <div class="mt-2">
-                <p class="mt-2 very-small-text" style="font-size: 12px">By: </p> <p class="very-small-text mb-2" style="font-size: 12px">Priority: </p>
+                <p class="mt-2 very-small-text" style="font-size: 12px">By: {{ taskData.User.email }}</p> <p class="very-small-text mb-2" style="font-size: 12px">Priority: {{ taskData.priority }}</p>
                 <a href="#" class="small-button btn-edit shadow-sm">Edit</a> <a href="#" class="small-button btn-delete shadow-sm">Delete</a>
             </div>
         </div>
@@ -18,6 +18,7 @@
 <script>
 export default {
     name: 'TaskItem',
+    props: ['taskData'],
     data() {
         return {
 
