@@ -63,7 +63,7 @@ export default {
             login_email: "",
             login_password: "",
             params: {
-                client_id: '619622577651-1u0i5kcr5t4k76b2rtmfk8bqe74jcmhf.apps.googleusercontent.com'
+                client_id: '619622577651-9pogieltd69pr9f4mv6alvk2m752t91m.apps.googleusercontent.com'
             },
             renderParams: {
                 width: 100,
