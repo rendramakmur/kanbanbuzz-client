@@ -53,6 +53,7 @@
 <script>
 import axios from 'axios';
 import GoogleLogin from 'vue-google-login';
+import Swal from 'sweetalert2';
 
 export default {
     name: 'LoginPage',
@@ -89,10 +90,19 @@ export default {
                 localStorage.name = data.name;
                 localStorage.email = data.email;
 
+                Swal.fire({
+                    icon: 'success',
+                    title: `Welcome back ${localStorage.name}.`
+                })
+
                 this.changePageProp('home');
             })
             .catch(err => {
-                console.log(err);
+                console.log(err.response.data.message);
+                Swal.fire({
+                    icon: 'error',
+                    title: err.response.data.message
+                })
             })
             .then(() => {
                 this.login_email = ''
@@ -117,10 +127,18 @@ export default {
                 localStorage.name = data.name;
                 localStorage.email = data.email;
 
+                Swal.fire({
+                    icon: 'success',
+                    title: `Welcome back ${localStorage.name}.`
+                })
+
                 this.changePageProp('home')
             })
             .catch(err => {
-                console.log(err);
+                Swal.fire({
+                    icon: 'error',
+                    title: err.response.data.message
+                })
             })
         }
     }

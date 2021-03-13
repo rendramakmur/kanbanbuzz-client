@@ -19,6 +19,7 @@
 
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
     name: 'TaskItem',
@@ -30,21 +31,42 @@ export default {
     },
     methods: {
         deleteTask(id) {
-            axios({
-                url: `${this.baseUrl}/tasks/${id}`,
-                method: 'DELETE',
-                headers: {
-                    access_token: localStorage.access_token
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete!'
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    axios({
+                        url: `${this.baseUrl}/tasks/${id}`,
+                        method: 'DELETE',
+                        headers: {
+                            access_token: localStorage.access_token
+                        }
+                    })
+                    .then(({data}) => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: `Delete task success!`
+                        })
+
+                        this.fetchTasks();
+                    })
+                    .catch(err => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: err.response.data.message
+                        })
+                    })
                 }
             })
-            .then(({data}) => {
-                console.log(data);
-                this.fetchTasks();
-            })
-            .catch(err => {
-                // Nanti di swal not authorized
-                console.log(err);
-            })
+
+            
         },
         getEditTask(id) {
             axios({
@@ -60,7 +82,10 @@ export default {
                 this.changeEditTaskPage(true);
             })
             .catch(err => {
-                console.log(err);
+                Swal.fire({
+                    icon: 'error',
+                    title: err.response.data.message
+                });
             })
         }
     }

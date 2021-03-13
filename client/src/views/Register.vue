@@ -42,7 +42,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
     name: 'RegisterPage',
@@ -67,10 +68,30 @@ export default {
             })
             .then(({data}) => {
                 console.log(data);
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: `Register success!`
+                })
+
                 this.changePageProp('login')
             })
             .catch(err => {
-                console.log(err);
+                let errMessage = ''
+                err.response.data.forEach((data, i) => {  
+                    if (i === err.response.data.length-1) {
+                        errMessage += data.message;
+                    } else {
+                        errMessage += data.message;
+                        errMessage += ', '
+                    }
+                });
+                errMessage += '.'
+
+                Swal.fire({
+                    icon: 'error',
+                    text: errMessage
+                })
             })
             .then(() => {
                 this.full_name,
