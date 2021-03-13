@@ -34,7 +34,7 @@
 
                                     <div class="d-flex justify-content-center">
                                         <div class="mt-2">
-                                            <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess"></GoogleLogin>
+                                            <a href="#" class="btn medium-button my-1 shadow" :params="params" @click.prevent="registerButton" :onSuccess="onSuccess">Google Login</a>
                                         </div>
                                     </div>
 
