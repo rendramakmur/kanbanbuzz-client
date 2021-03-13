@@ -32,6 +32,12 @@
                                         </div>
                                     </div>
 
+                                    <div class="d-flex justify-content-center">
+                                        <div class="mt-2">
+                                            <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess"></GoogleLogin>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -46,6 +52,7 @@
 
 <script>
 import axios from 'axios';
+import GoogleLogin from 'vue-google-login';
 
 export default {
     name: 'LoginPage',
@@ -53,8 +60,19 @@ export default {
     data() {
         return {
             login_email: "",
-            login_password: "" 
+            login_password: "",
+            params: {
+                client_id: '619622577651-1u0i5kcr5t4k76b2rtmfk8bqe74jcmhf.apps.googleusercontent.com'
+            },
+            renderParams: {
+                width: 100,
+                height: 30,
+                longtitle: false
+            }
         };
+    },
+    components: {
+        GoogleLogin
     },
     methods: {
         login() {
@@ -83,6 +101,27 @@ export default {
         },
         registerButton() {
             this.changePageProp('register');
+        },
+        onSuccess(googleUser) {
+            let google_token = googleUser.getAuthResponse().id_token;
+
+            axios({
+                url: `${this.baseUrl}/google-login`,
+                method: 'POST',
+                data: {
+                    google_token
+                }
+            })
+            .then(({data}) => {
+                localStorage.access_token = data.access_token;
+                localStorage.name = data.name;
+                localStorage.email = data.email;
+
+                this.changePageProp('home')
+            })
+            .catch(err => {
+                console.log(err);
+            })
         }
     }
 }

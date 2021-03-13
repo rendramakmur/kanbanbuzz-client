@@ -14,7 +14,7 @@
                     <a class="nav-link medium-text" href="#" @click.prevent="changePage('login')">Login</a>
                 </li>
                 <li v-else class="nav-item">
-                    <a class="nav-link medium-text" href="#" @click.prevent="logout">Logout</a>
+                    <a class="nav-link medium-text" href="#" @click.prevent="logout" :params="params">Logout</a>
                 </li>
             </ul>
             </div>
@@ -26,6 +26,13 @@
 export default {
     name: 'Navbar',
     props: ["pageProp"],
+    data() {
+        return {
+            params: {
+                client_id: '619622577651-1u0i5kcr5t4k76b2rtmfk8bqe74jcmhf.apps.googleusercontent.com'
+            }
+        }
+    },
     methods: {
         changePage(value) {
             if (value === 'login') {
@@ -35,7 +42,14 @@ export default {
             }
         },
         logout() {
+            this.signOut();
             this.$emit('navbarLogout');
+        },
+        signOut() {
+            let auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+            console.log('User signed out.');
+            });
         }
     }
 }
