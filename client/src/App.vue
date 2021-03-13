@@ -22,7 +22,7 @@ export default {
         return {
             page: 'login',
             addTask: false,
-            baseUrl: 'http://localhost:3000',
+            baseUrl: 'https://kanbanbuzz.herokuapp.com',
             tasks: []
         }
     },
