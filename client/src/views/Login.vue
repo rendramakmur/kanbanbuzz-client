@@ -34,7 +34,6 @@
 
                                     <div class="d-flex justify-content-center">
                                         <div class="mt-2">
-                                            <a href="#" class="btn medium-button my-1 shadow" :params="params" :onSuccess="onSuccess">Google Login</a>
                                             <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess"></GoogleLogin>
                                         </div>
                                     </div>
@@ -64,7 +63,7 @@ export default {
             login_email: "",
             login_password: "",
             params: {
-                client_id: '619622577651-fjcp221rv2v3m749g11lmhgssevshtds.apps.googleusercontent.com'
+                client_id: '619622577651-73ec0okb417rhrvucc1inaeaqprfopec.apps.googleusercontent.com'
             },
             renderParams: {
                 width: 100,

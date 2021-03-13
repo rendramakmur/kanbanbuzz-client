@@ -29,7 +29,7 @@ export default {
     data() {
         return {
             params: {
-                client_id: '619622577651-fjcp221rv2v3m749g11lmhgssevshtds.apps.googleusercontent.com'
+                client_id: '619622577651-73ec0okb417rhrvucc1inaeaqprfopec.apps.googleusercontent.com'
             }
         }
     },
